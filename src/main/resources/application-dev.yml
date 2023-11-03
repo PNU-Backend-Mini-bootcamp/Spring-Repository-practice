@@ -1,0 +1,38 @@
+# 1
+server:
+  servlet:
+    encoding:
+      charset: utf-8
+      force: true
+  port: 8080
+
+spring:
+  # 2
+  mustache:
+    servlet:
+      expose-session-attributes: true
+      expose-request-attributes: true
+  # 3
+  datasource:
+    url: jdbc:h2:mem:test;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  # 4
+  jpa:
+    hibernate:
+      ddl-auto: create
+    # 5
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# 6
+logging:
+  level:
+    '[shop.mtcoding.blogv2]': INFO
+    '[org.hibernate.type]': TRACE
