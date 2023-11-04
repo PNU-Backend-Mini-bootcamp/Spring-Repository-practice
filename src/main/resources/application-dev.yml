@@ -1,15 +1,15 @@
 server:
   servlet:
     encoding:
-      charset: utf-8 # 서버가 데이터를 처리할 때 기본 문자 인코딩으로 utf-8을 사용합니다. 이 설정은 영어는 1바이트, 한글은 3바이트로 처리됨을 의미합니다.
-      force: true # 응답 및 요청에 대해 설정된 인코딩(charset)을 강제로 사용하도록 합니다. 즉, 다른 인코딩이 지정되어 있어도 utf-8을 사용하게 합니다.
-  port: 8080 # 스프링 부트 애플리케이션이 8080 포트에서 실행되도록 설정합니다.
+      charset: utf-8 # 영어는 1 바이트, 한글은 3 바이트
+      force: true # 인코딩(charset) 강제 사용
+  port: 8080 # 스프링 부트 어플리케이션: 8080 포트 실행.
 
 spring:
   mustache:
     servlet:
-      expose-session-attributes: true # Mustache 템플릿에서 HTTP 세션 속성에 접근할 수 있도록 허용합니다.
-      expose-request-attributes: true # Mustache 템플릿에서 HTTP 요청 속성에 접근할 수 있도록 허용합니다.
+      expose-session-attributes: true # Mustache -> HTTP 세션 속성에 접근.
+      expose-request-attributes: true # Mustache -> HTTP 요청 속성에 접근.
   datasource:
     url: jdbc:h2:mem:test;MODE=MySQL # 데이터 소스 URL을 설정합니다. 여기서는 H2 데이터베이스의 메모리 모드를 사용하며 MySQL 호환 모드로 설정됩니다.
     driver-class-name: org.h2.Driver # JDBC 드라이버 클래스 이름을 설정합니다. H2 데이터베이스의 드라이버 클래스 이름을 사용합니다.
