@@ -1,38 +1,32 @@
-# 1
 server:
   servlet:
     encoding:
-      charset: utf-8
-      force: true
-  port: 8080
+      charset: utf-8 # 서버가 데이터를 처리할 때 기본 문자 인코딩으로 utf-8을 사용합니다. 이 설정은 영어는 1바이트, 한글은 3바이트로 처리됨을 의미합니다.
+      force: true # 응답 및 요청에 대해 설정된 인코딩(charset)을 강제로 사용하도록 합니다. 즉, 다른 인코딩이 지정되어 있어도 utf-8을 사용하게 합니다.
+  port: 8080 # 스프링 부트 애플리케이션이 8080 포트에서 실행되도록 설정합니다.
 
 spring:
-  # 2
   mustache:
     servlet:
-      expose-session-attributes: true
-      expose-request-attributes: true
-  # 3
+      expose-session-attributes: true # Mustache 템플릿에서 HTTP 세션 속성에 접근할 수 있도록 허용합니다.
+      expose-request-attributes: true # Mustache 템플릿에서 HTTP 요청 속성에 접근할 수 있도록 허용합니다.
   datasource:
-    url: jdbc:h2:mem:test;MODE=MySQL
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:h2:mem:test;MODE=MySQL # 데이터 소스 URL을 설정합니다. 여기서는 H2 데이터베이스의 메모리 모드를 사용하며 MySQL 호환 모드로 설정됩니다.
+    driver-class-name: org.h2.Driver # JDBC 드라이버 클래스 이름을 설정합니다. H2 데이터베이스의 드라이버 클래스 이름을 사용합니다.
+    username: sa # 데이터베이스 접속을 위한 기본 사용자 이름으로 'sa'를 설정합니다.
+    password: # 데이터베이스 접속을 위한 비밀번호는 설정하지 않습니다(비어 있는 상태).
   h2:
     console:
-      enabled: true
-  # 4
+      enabled: true # H2 데이터베이스 콘솔을 활성화합니다. 개발 중에 데이터베이스 상태를 쉽게 확인할 수 있도록 하는 기능입니다.
   jpa:
     hibernate:
-      ddl-auto: create
-    # 5
-    show-sql: true
+      ddl-auto: create # 데이터베이스 스키마를 자동으로 생성하도록 설정합니다. 애플리케이션 시작 시 데이터베이스의 테이블이 없다면 새로 생성합니다.
+    show-sql: true # Hibernate가 생성하는 SQL 쿼리를 콘솔에 출력하도록 설정합니다. 디버깅에 유용합니다.
     properties:
       hibernate:
-        format_sql: true
+        format_sql: true # Hibernate가 출력하는 SQL을 가독성 좋게 포맷하여 출력합니다.
 
-# 6
 logging:
   level:
-    '[shop.mtcoding.blogv2]': INFO
-    '[org.hibernate.type]': TRACE
+    '[shop.mtcoding.blogv2]': INFO # 'shop.mtcoding.blogv2' 패키지 내의 로깅 레벨을 INFO로 설정합니다. INFO, WARN, ERROR 등의 중요한 정보만 로깅됩니다.
+    '[org.hibernate.type]': TRACE # 'org.hibernate.type' 카테고리에 대해서는 TRACE 레벨의 로깅을 활성화합니다. 이는 매우 상세한 로깅 정보를 제공합니다.

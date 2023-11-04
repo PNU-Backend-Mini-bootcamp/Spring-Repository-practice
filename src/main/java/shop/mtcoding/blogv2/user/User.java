@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor // Select 시에 JPA가 기본 생성자를 호출해서 자바 객체를 만들어준다.
 @Getter
@@ -23,14 +24,14 @@ public class User {
     @Column(nullable = false, length = 60)
     private String password;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 100)
     private String email;
 
     @CreationTimestamp
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
     @Builder
-    public User(Integer id, String username, String password, String email, Timestamp createdAt) {
+    public User(Integer id, String username, String password, String email, LocalDateTime createdAt) {
         this.id = id;
         this.username = username;
         this.password = password;
